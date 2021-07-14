@@ -1,56 +1,53 @@
+import Layout from "@/components/Layout";
+
 export default function Home() {
   return (
-    <div className="container">
-      <main className="main">
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code className="code">pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <Layout>
+    <div class="container-xl">
+        <div class="d-flex row flex-row align-items-center">
+            <div class="col-8">
+              <img class="img-fluid fill" src="images/Group 36.svg" width="885" height="535" alt="Responsive image"/>              
+            </div>
+            <div class="col-4 p-5">
+              <div class="txt-h1 my-5">Help You to Exchange Money</div>
+              <div class="txt-p my-5">Receh adalah sebuah platform yang dapat membantu anda untuk menukar uang anda menjadi pecahan yang lebih kecil dengan sangat mudah dan efisien.</div>
+              <a class="dec-none" href="money-changer.html"><button type="button" class="btn btn-cus-primary bg-cus-warning my-5 txt-btn">Tukar Sekarang</button></a>              
+            </div>
         </div>
-      </main>
+        
+        <div class="txt-h1 my-5 text-center">
+          What will you do here
+        </div>
 
-      <footer className="footer">
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
-    </div>
+        {/* backgroud belum selesai */}
+        <div class="bg-cus-1">
+          <div class="d-flex row flex-row">
+            <div class="dflex col-6">
+              <img class="img-fluid fit-content" src="images/box-1.svg" alt="Responsive image"/>
+            </div>
+            <div class="d-flex col-6 align-items-center">
+              <p class="txt-h2">Isikan uang yang ingin anda tukarkan dan pilih pecahan sesuai selera.</p>
+            </div>
+          </div>
+          <div class="d-flex row flex-row">
+            <div class="d-flex col-6 align-items-center justify-content-end">
+              <p class="txt-h2">Pilih metode pengampilan uang.</p>
+            </div>
+            <div class="dflex col-6">
+              <img class="img-fluid fit-content" src="images/box-1.svg" alt="Responsive image"/>
+            </div>
+          </div>
+          
+          <div class="d-flex row flex-row">
+            <div class="dflex col-6">
+              <img class="img-fluid fit-content" src="images/box-1.svg" alt="Responsive image"/>
+            </div>
+            <div class="d-flex col-6 align-items-center">
+              <p class="txt-h2">Bayar langsung ke kurir</p>
+            </div>
+          </div>
+        </div>
+    </div>            
+    </Layout>
   );
 }
