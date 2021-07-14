@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+
 const Layout = ({ children, seoData, isNoIndex }) => {
   const { asPath: canonicalPath } = useRouter();
   const canonicalUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
@@ -47,6 +48,8 @@ const Layout = ({ children, seoData, isNoIndex }) => {
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"/>
         <link rel="stylesheet" href="style/style.css"/>
       </Head>
+
+      {/* navigations */}
       <nav class="navbar navbar-expand-lg navbar-light bg-light  sticky-top">
         <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -56,10 +59,10 @@ const Layout = ({ children, seoData, isNoIndex }) => {
           <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarNavDropdown">
             <ul class="navbar-nav txt-nav">
               <li class="nav-item mx-5">
-                <a class="txt-nav" href="index.html">Beranda</a>
+                <a class="txt-nav" href="/">Beranda</a>
               </li>
               <li class="nav-item mx-5">
-                <a class="txt-nav" href="money-changer.html">Tukarkan</a>
+                <a class="txt-nav" href="../../money-changer">Tukarkan</a>
               </li>
               <li class="nav-item mx-5">
                 <a class="txt-nav" href="cart.html">
@@ -71,7 +74,10 @@ const Layout = ({ children, seoData, isNoIndex }) => {
           </div>
         </div>
       </nav>      
+      {/* navigations */}
+
       {children}
+
       <footer class="bg-cus-tersier mt-5">
         <div class="row p-5">
           <div class="col-4">
