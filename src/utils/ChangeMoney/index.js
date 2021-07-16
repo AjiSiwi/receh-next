@@ -1,5 +1,5 @@
 export const getChangeMoney = async () => {
-    const resp = await fetch("http://localhost:1337/change-monies");
+    const resp = await fetch("https://receh-database.herokuapp.com/change-monies");
     const res = await resp.json();
     const tableData = res.map((data) => ({
       id: data.id,
