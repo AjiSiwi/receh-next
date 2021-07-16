@@ -11,7 +11,8 @@
     "next": "^11.0.1",
     "next-pwa": "^5.2.23",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "uuidv4": "^6.2.11"
   },
   "license": "MIT",
   "devDependencies": {

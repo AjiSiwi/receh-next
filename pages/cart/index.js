@@ -1,7 +1,9 @@
 import Layout from "@/components/Layout";
-import { Fragment } from "react";
+import { Fragment,useEffect,useState } from "react";
+import {getChangeMoney} from "@/utils/Money";
 
-export default function Cart() {
+export default function Cart({changeMoney}) {
+    console.lopg("chaneMoney", changeMoney)
     return(                 
         <Fragment>
         <Layout>
@@ -114,3 +116,12 @@ export default function Cart() {
         </Fragment>            
     );    
 }
+
+export async function getStaticProps() {
+    const changeMoney = await getChangeMoney();      
+    return {
+      props: {
+        changeMoney
+      },
+    };
+  }

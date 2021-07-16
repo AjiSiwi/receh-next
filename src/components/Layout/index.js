@@ -65,7 +65,7 @@ const Layout = ({ children, seoData, isNoIndex }) => {
                 <a class="txt-nav" href="../../money-changer">Tukarkan</a>
               </li>
               <li class="nav-item mx-5">
-                <a class="txt-nav" href="cart.html">
+                <a class="txt-nav" href="../../cart">
                     <img src="images/invoice.svg" alt="" width="27" height="27" class="d-inline-block align-top"/>
                 </a>
                 
