@@ -1,9 +1,9 @@
 import Layout from "@/components/Layout";
 import { Fragment,useEffect,useState } from "react";
-import {getChangeMoney} from "@/utils/Money";
+import {getChangeMoney} from "@/utils/ChangeMoney";
 
 export default function Cart({changeMoney}) {
-    console.lopg("chaneMoney", changeMoney)
+    console.log("chaneMoney", changeMoney)
     return(                 
         <Fragment>
         <Layout>
