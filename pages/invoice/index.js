@@ -177,7 +177,7 @@ export default function Invoice() {
                                     <a href="cart.html" class="btn btn-flex bg-cus-danger text-white txt-h2 p-3">Batal</a>                        
                                 </div>
                                 <div class="col p-3">
-                                    <a class="btn btn-flex bg-cus-warning txt-h2 p-3" href="history.html">Pesan</a>                                    
+                                    <a class="btn btn-flex bg-cus-warning txt-h2 p-3" href="../history">Pesan</a>                                    
                                 </div>            
                             </div>                            
                         </div>
