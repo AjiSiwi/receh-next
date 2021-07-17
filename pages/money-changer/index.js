@@ -104,7 +104,7 @@ export default function MoneyChanger({monies}) {
                     </div>
 
                     <div class="col-6 d-flex justify-content-end">
-                        <a class="dec-none" href="">
+                        <a class="dec-none" href="../invoice">
                             <button 
                                 type="submit" 
                                 class="btn btn-cus-primary bg-cus-warning my-5 txt-btn"                                
