@@ -1,9 +1,24 @@
 import Layout from "@/components/Layout";
 import { Fragment,useEffect,useState } from "react";
 import {getChangeMoney} from "@/utils/ChangeMoney";
+import {getMoneyNominalById} from "@/utils/Money";
+import ChangeMoney from "@/components/changeMoney";
 
-export default function Cart({changeMoney}) {
-    console.log("chaneMoney", changeMoney)
+export default function Cart({changeMonies}) {
+    // const [money, setMoney] = useState([]);
+    // useEffect(() => {
+    //   const getMoneyById = async () => {              
+    //     const getMoney = await fetch(`http://receh-database.herokuapp.com/monies/1`);
+    //     const moneyById = await getMoney.json();                    
+    //     setMoney();
+    //   };      
+    //   if (slug) {
+    //     getProduct();
+    //   }
+    // }, [slug]);
+    
+    // console.log("get money",getMoneyNominalById(1));
+    
     return(                 
         <Fragment>
         <Layout>
@@ -23,91 +38,13 @@ export default function Cart({changeMoney}) {
 
                     <hr/>
 
-                    <div class="card card-primary txt-h2">
-                        <div class="card-body row">
-                            <div class="col-9 row">
-                                <div class="row py-3">
-                                    <div class="col-3 d-flex justify-content-between">
-                                        <p>Nilai Tukar</p>                        
-                                        <p>:</p>
-                                    </div>
-                                    <div class="col-3">
-                                        <p>Rp 500.000</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3 d-flex justify-content-between">
-                                        <p>Pecahan</p>
-                                        <p>:</p>                                    
-                                    </div>
+                    {changeMonies.map((changeMoney,index)=>(
+                        <ChangeMoney id={changeMoney.id} changeNominal={changeMoney.change_nominal} />
+                    ))}
 
-                                    <div class="col-9 row">
-                                        <div class="col-4">
-                                            <p>100.000 @ 3</p>
-                                        </div>
+                    
+                    
 
-                                        <div class="col-4">
-                                            <p>50.000 @ 2</p>
-                                        </div>
-
-                                        <div class="col-4">
-                                            <p>10.000 @ 10</p>
-                                        </div>                                
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 d-flex justify-content-end align-items-center">                            
-                                <button class="btn"><i class="fas fa-times fa-2x"></i></button>
-                            </div>                      
-                        </div>                    
-                    </div>
-                </div>
-                {/* <!-- end of card --> */}
-
-                {/* <!-- beginning of card --> */}
-                <div class="my-5 cart-container">
-                    <div class="card card-primary txt-h2">
-                        <div class="card-body row">
-                            <div class="col-9 row">
-                                <div class="row py-3">
-                                    <div class="col-3 d-flex justify-content-between">
-                                        <p>Nilai Tukar</p>                        
-                                        <p>:</p>
-                                    </div>
-                                    <div class="col-3">
-                                        <p>Rp 1.000.000</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3 d-flex justify-content-between">
-                                        <p>Pecahan</p>
-                                        <p>:</p>                                    
-                                    </div>
-
-                                    <div class="col-9 row">
-                                        <div class="col-4">
-                                            <p>100.000 @ 2</p>
-                                        </div>
-
-                                        <div class="col-4">
-                                            <p>50.000 @ 4</p>
-                                        </div>
-
-                                        <div class="col-4">
-                                            <p>20.000 @ 15</p>
-                                        </div> 
-
-                                        <div class="col-4">
-                                            <p>10.000 @ 30</p>
-                                        </div>                                                                   
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 d-flex justify-content-end align-items-center">
-                                <button class="btn"><i class="fas fa-times fa-2x"></i></button>
-                            </div>                      
-                        </div>                    
-                    </div>
                 </div>
                 {/* <!-- end of card --> */}
             </div>
@@ -118,10 +55,10 @@ export default function Cart({changeMoney}) {
 }
 
 export async function getStaticProps() {
-    const changeMoney = await getChangeMoney();      
+    const changeMonies = await getChangeMoney();    
     return {
       props: {
-        changeMoney
+        changeMonies        
       },
     };
   }

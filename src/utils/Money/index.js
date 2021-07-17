@@ -7,3 +7,10 @@ export const getMoney = async () => {
     }));
     return tableData
   }
+
+  export const getMoneyNominalById = async (id) => {
+    const resp = await fetch(`https://receh-database.herokuapp.com/monies/${id}`);
+    const res = await resp.json();
+    const nominal = res.nominal    
+    return nominal
+  }

@@ -3,7 +3,7 @@ export const getChangeMoney = async () => {
     const res = await resp.json();
     const tableData = res.map((data) => ({
       id: data.id,
-      changeNominal: data.change_nominal,
+      change_nominal: data.change_nominal,
       fragments: data.fragments
     }));
     return tableData
