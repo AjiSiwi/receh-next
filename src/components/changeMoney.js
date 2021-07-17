@@ -13,7 +13,7 @@ export default function changeMoney({id, changeNominal}) {
                         <p>:</p>
                     </div>
                     <div class="col-3">
-                        <p>Rp{changeNominal}</p>
+                        <p>Rp {changeNominal}</p>
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@ export default function changeMoney({id, changeNominal}) {
                     <div class="col-9 row">                                  
                     {data && data?.map((fragment,i)=>(                                                  
                         <div class="col-4">
-                            <p>{fragment.money?.nominal} @ {fragment.quantity}</p>
+                            <p>Rp {fragment.money?.nominal} @ {fragment.quantity}</p>
                         </div>                                                     
                     ))}
                     </div>                                            

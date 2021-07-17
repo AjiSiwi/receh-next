@@ -5,19 +5,9 @@ import {getMoneyNominalById} from "@/utils/Money";
 import ChangeMoney from "@/components/changeMoney";
 
 export default function Cart({changeMonies}) {
-    // const [money, setMoney] = useState([]);
-    // useEffect(() => {
-    //   const getMoneyById = async () => {              
-    //     const getMoney = await fetch(`http://receh-database.herokuapp.com/monies/1`);
-    //     const moneyById = await getMoney.json();                    
-    //     setMoney();
-    //   };      
-    //   if (slug) {
-    //     getProduct();
-    //   }
-    // }, [slug]);
-    
-    // console.log("get money",getMoneyNominalById(1));
+    const total = changeMonies.reduce((totalNominal, changeMoney) => totalNominal + parseInt(changeMoney.change_nominal),0)
+
+    console.log("Total", total)
     
     return(                 
         <Fragment>
@@ -28,7 +18,7 @@ export default function Cart({changeMonies}) {
                 <div class="my-5 cart-container">
                     <div class="row my-5 txt-h2">
                         <div class="col-9 d-flex justify-content-end">
-                            <p class="txt-h1">Total : Rp 1.500.400</p>
+                            <p class="txt-h1">Total : Rp {total}</p>
                         </div>
 
                         <div class="col-3 d-flex justify-content-end">

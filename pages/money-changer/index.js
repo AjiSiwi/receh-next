@@ -1,21 +1,32 @@
 import Layout from "@/components/Layout";
 import { Fragment,useEffect,useState } from "react";
 import {getMoney} from "@/utils/Money";
-import { v4 as uuidv4 } from 'uuid';
+
 
 export default function MoneyChanger({monies}) {
-    const [inputFragments, setInputFragment] = useState([ 
-        { id: uuidv4(), money:'', quantity:0} 
+    const [inputFragments, setInputFragment] = useState([
+        { money:'',quantity:''}        
     ]);
 
-    const handleChangeFragments = (id, event) => {        
-        const newInputFragment = inputFragments.map(fragment =>{
-            if (id === fragment.id ) {
-                fragment[event.target.name] = event.target.value
-            }
-            setInputFragment(newInputFragment);
-        })
+    const handleChangeFragments = (index, value) => {         
+        const oldForm = [...inputFragments];        
+        const oldValue = oldForm[index]
+        const newValue = {...oldValue,...value}
+        console.log("old value",oldValue)       
+        console.log("new value",newValue)
+        const newForm = [
+            ...oldForm.slice(0,index),
+            {...newValue},
+            ...oldForm.slice(index+1)
+        ]
+        setInputFragment(newForm);
     }
+
+    // const handleChangeFragments = (index, event) => {        
+    //     const values = [...inputFragments];        
+    //     values[index][event.target.name] = event.target.value;
+    //     setInputFragment(values);
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -26,10 +37,9 @@ export default function MoneyChanger({monies}) {
         setInputFragment([...inputFragments,{ money:'',quantity:''}])
     }
 
-    const handleRemoveFragment = (id) => {
-        const values = [...inputFragments];
-        values.splice(values.findIndex(value => value.id === id),1);
-        setInputFragment(values)
+    const handleRemoveFragment = (i) => {               
+        const newInputFragment = inputFragments.filter((_,index) => index !== i);
+        setInputFragment(newInputFragment)
     }
 
     return (
@@ -52,38 +62,14 @@ export default function MoneyChanger({monies}) {
                 <div class="row">
                     <div class="col-5"><p class="txt-h2">Tukarkan</p></div>
                     <div class="col-5"><p class="txt-h2">Nominal</p></div>
-                    <div class="col-5">
-                        <select class="form-control form-primary my-3 txt-form fill" name="money" id="money" onChange={event => handleChangeFragments(inputFragments?.[0].id,event)}>
-                            <option value="">Pilih Pecahan</option>
-                            {monies.map((money)=>(
-                                <option key={money.id} value={money.id}>{money.nominal}</option>
-                            ))}
-                        </select>
-                    </div>
-                    <div class="col-5">                    
-                        <input 
-                            type="number" 
-                            class="form-control form-primary my-3 txt-form fill text-center" 
-                            name="quantity" 
-                            id="quantity"
-                            value={inputFragments[0].quantity}                             
-                            onChange={event => handleChangeFragments(inputFragments?.[0].id, event)}
-                        />      
-                    </div>
-                    <div class="col-2 d-flex justify-content-center align-items-center">
-                        <button 
-                            class="btn "
-                            onClick={() => handleAddFragment()}
-                        ><i class="fas fa-plus fa-2x"></i></button>
-                    </div> 
 
-                    {inputFragments.slice(1).map((fragment)=>(
+                    {inputFragments.map((fragment,index)=>(
                         <Fragment>
                             <div class="col-5">
-                                <select class="form-control form-primary my-3 txt-form fill" name="money" id="money" onChange={event => handleChangeFragments(fragment.id,event)}>
+                                <select class="form-control form-primary my-3 txt-form fill" name="money" id="money" onChange={event => handleChangeFragments(index,{money : event.target.value})}>
                                     <option value="">Pilih Pecahan</option>
                                     {monies.map((money)=>(
-                                        <option key={money.id} value={money.id}>{money.nominal}</option>
+                                        <option key={money.id} value={money.nominal}>{money.nominal}</option>
                                     ))}
                                 </select>
                             </div>
@@ -94,14 +80,20 @@ export default function MoneyChanger({monies}) {
                                     name="quantity" 
                                     id="quantity" 
                                     value={fragment.quantity}
-                                    onChange={event => handleChangeFragments(fragment.id, event)}
+                                    onChange={event => handleChangeFragments(index,{quantity : event.target.value})}
                                 />      
                             </div>
-                            <div class="col-2 d-flex justify-content-center align-items-center">
+                            <div class="col d-flex justify-content-center align-items-center">
                                 <button 
                                     class="btn "
-                                    onClick={() => handleRemoveFragment(fragment.id)}
+                                    onClick={() => handleRemoveFragment(index)}
                                 ><i class="fas fa-minus fa-2x"></i></button>
+                            </div>
+                            <div class="col d-flex justify-content-center align-items-center">
+                                <button 
+                                    class="btn "
+                                    onClick={() => handleAddFragment()}
+                                ><i class="fas fa-plus fa-2x"></i></button>
                             </div>
                         </Fragment>                        
                     ))}
@@ -115,8 +107,7 @@ export default function MoneyChanger({monies}) {
                         <a class="dec-none" href="">
                             <button 
                                 type="submit" 
-                                class="btn btn-cus-primary bg-cus-warning my-5 txt-btn"
-                                onClick={handleSubmit}
+                                class="btn btn-cus-primary bg-cus-warning my-5 txt-btn"                                
                             >Ke Kerangjang </button>
                         </a>  
                     </div>
