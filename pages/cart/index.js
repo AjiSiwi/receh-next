@@ -22,7 +22,7 @@ export default function Cart({changeMonies}) {
                         </div>
 
                         <div class="col-3 d-flex justify-content-end">
-                            <a class="btn btn-cus-lg bg-cus-warning txt-h2" href="invoice.html">Checkout</a>  
+                            <a class="btn btn-cus-lg bg-cus-warning txt-h2" href="../invoice">Checkout</a>  
                         </div>
                     </div>
 
